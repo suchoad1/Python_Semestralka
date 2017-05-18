@@ -1,0 +1,94 @@
+Index: semestralka.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- semestralka.py	(revision )
++++ semestralka.py	(revision )
+@@ -18,48 +18,50 @@
+ def menu():
+     print("Nyni si vyber, co chces s obrazkem udelat. Upravena verze se ulozi na stejnem umisteni jako original, k tomu se otevre ve tvem defaultnim prohlizeci obrazku.")
+     print("0. Zobrazit original")
+-    print("1. Prevraceni obrazu")
+-    print("2. Rotace")
+-    print("3. Negativ")
+-    print("4. Prirozeny negativ")
+-    print("5. Odstiny sedi")
+-    print("6. Zesvetleni")
+-    print("7. Ztmaveni")
+-    print("8. Zvyrazneni hran")
+-    print("9. Ukonceni kodu")
++    print("1. Prevraceni obrazu ve svisle ose")
++    print("2. Prevraceni obrazu ve vodorovne ose")
++    print("3. Rotace")
++    print("4. Negativ")
++    print("5. Prirozeny negativ")
++    print("6. Odstiny sedi")
++    print("7. Zesvetleni")
++    print("8. Ztmaveni")
++    print("9. Zvyrazneni hran")
++    print("10. Ukonceni kodu")
+     vyber = int(input("Zvol si cislo: "))
+     print("\n")
+     if vyber == 0:
+         img.show()
+         menu()
+     elif vyber == 1:
+-        prevraceni()
++        prevraceni_svisle()
+         menu()
+-    elif vyber == 2:
+-        rotace()
++    elif vyber ==2:
++        prevraceni_vodorovne()
+         menu()
+     elif vyber == 3:
+-        negativ()
++        rotace()
+         menu()
+     elif vyber == 4:
+-        prirozenyNegativ()
++        negativ()
+         menu()
+     elif vyber == 5:
+-        odstinySedi()
++        prirozenyNegativ()
+         menu()
+     elif vyber == 6:
+-        zesvetleni()
++        odstinySedi()
+         menu()
+     elif vyber == 7:
+-        ztmaveni()
++        zesvetleni()
+         menu()
+     elif vyber == 8:
+-        hrany()
++        ztmaveni()
+         menu()
+     elif vyber == 9:
+-        exit
++        hrany()
++        menu()
+     elif vyber == 10:
+-        cervena()
++        exit
+     else:
+         print("Nesprávný vstup, zkus znovu:")
+         menu()
+@@ -114,13 +116,13 @@
+     img_out.save(soubor + '_prirozenaInverze.jpg')
+     img_out.show()
+ 
+-def prevraceni():
++def prevraceni_svisle():
+     data_out = np.fliplr(data)
+     img_out = Image.fromarray(data_out, 'RGB')
+     img_out.save(soubor + '_prevraceni.jpg')
+     img_out.show()
+ 
+-def cervena():
++def prevraceni_vodorovne():
+     data_out = data[::-1, :, :]
+     img_out = Image.fromarray(data_out, 'RGB')
+     img_out.save(soubor + '_cervena.jpg')
